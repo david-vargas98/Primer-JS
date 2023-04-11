@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <!-- Se hace el enlace con CSS -->
+    <link rel="stylesheet" href="CSS/styles.css" />
+    <!-- Se agrega un ícono -->
+    <link rel="shortcut icon" href="calcular.png" type="image/x-icon">
+  </head>
+  <body>
+    <!-- Se estructurará en bloques la calculadora -->
+    <div class="container">
+      <!-- Este es el tema Dark -->
+      <div class="calculator dark">
+        <!-- Se le da una clase "Múltiple" para activar el tema Dark-->
+        <div class="theme-toggler active">
+          <!-- Se agrega un decorador -->
+          <i class="toggler-icon"></i>
+        </div>
+        <!-- Se agrega un display, para poder dar la vista como si fueran filas agregadas y aquí mismo es la pantalla para visualizar lo que se escribe-->
+        <div class="display-screen">
+          <!-- En este div se usa un identificador "ID" para JS para identificarlo y agregar un determinado comportamiento -->
+          <div id="display"></div>
+        </div>
+        <!-- Ahora, se crea la parte de donde estarán todos los botones -->
+        <div class="buttons">
+          <!-- Para la agrupación de los botones se usa una tabla -->
+          <table>
+            <!-- Se va organizar la tabla por bloques, por ello se usa tr que representa una fila de una tabla y se usa dentro de table -->
+            <tr>
+              <!-- Este será el primer elemento, usando "td", qué representa un elemento y representa a su vez las celdas de las filas. En este caso estos elementos contendrán los botones -->
+              <td><button class="btn-operator" id="clear">C</button></td>
+              <td><button class="btn-operator" id="/">/</button></td>
+              <td><button class="btn-operator" id="*">*</button></td>
+              <td><button class="btn-operator" id="backspace"><</button></td>
+            </tr>
+            <!-- Aquí empieza el segundo bloque -->
+            <tr>
+              <td><button class="btn-number" id="7">7</button></td>
+              <td><button class="btn-number" id="8">8</button></td>
+              <td><button class="btn-number" id="9">9</button></td>
+              <td><button class="btn-operator" id="-">-</button></td>
+            </tr>
+            <!-- Aquí empieza el tercer bloque -->
+            <tr>
+              <td><button class="btn-number" id="4">4</button></td>
+              <td><button class="btn-number" id="5">5</button></td>
+              <td><button class="btn-number" id="6">6</button></td>
+              <td><button class="btn-operator" id="+">+</button></td>
+            </tr>
+            <!-- Aquí empieza el cuarto bloque -->
+            <tr>
+              <td><button class="btn-number" id="1">1</button></td>
+              <td><button class="btn-number" id="2">2</button></td>
+              <td><button class="btn-number" id="3">3</button></td>
+              <!-- A este td se le pide que invada dos filas con rowspan -->
+              <td rowspan="2"><button class="btn-equal" id="equal">=</button></td>
+            </tr>
+            <!-- Aquí empieza el quinto bloque -->
+            <tr>
+              <td><button class="btn-operator" id=".">.</button></td>
+              <td><button class="btn-number" id="0">0</button></td>
+              <td><button class="btn-operator" id="00">00</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Se hace el enlace con JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

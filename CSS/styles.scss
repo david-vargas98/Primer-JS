@@ -1,0 +1,214 @@
+// Primero, se formatea la página con un selector global -> *
+* {
+  // Se quita todo relleno que exista
+  padding: 0;
+  // También se quita todo margen que exista
+  margin: 0;
+  // Se usa el box-sizing para que las medidas sean reales o exactas
+  box-sizing: border-box;
+  // Se establece el tipo de letra que ocupará
+  font-family: sans-serif;
+}
+
+// Ahora, el siguiente elemento a estilizar es el fondo
+body {
+  // Linear-gradient es una función CSS que permite crear un gradiente lineal, es decir, una transición gradual de un color a otro a lo largo de una línea recta. Como de rojo a azul extendido de arriba hacia abajo, para este la sintexis sería: background: linear-gradient(to bottom, #ff0000, #0000ff);
+  // El primer parámetro es la dirección del gradiente y puede ser en grados (degree), radianes, to top, to bottom, etc. y después en el segundo va el color del gradiente.
+  background: linear-gradient(45deg, #f06291, #fffde7);
+}
+
+// Ahora, se le da estilo al contenedor de los elementos
+.container {
+  // Se define una altura
+  height: 100vh; // Con 100vh ocupa el 100% de la altura
+  width: 100vw; // Con 100vw ocupa el 100% del ancho
+  // Al display se le dice que sea flexible
+  display: flex;
+  // Los items se centran con respecto a la altura
+  align-items: center;
+  // Los items se centran con respecto a su anchura
+  justify-content: center;
+  // Se configura el flex-wrap si es que estás trabajando como celular o pc
+  flex-wrap: wrap;
+}
+
+// Después, se le da estilo al contenedor de todos los botones
+.calculator {
+  // Siendo que esta clase es un padre, se le dice que será relaitva, ya que será con respecto a su misma posición
+  position: relative;
+  // Se le da un alto automático
+  height: auto;
+  // Se le da un ancho automático
+  width: auto;
+  // Se le da un relleno a la calculadora para que vaya hacia dentro
+  padding: 20px;
+  // Se le da borde curvado
+  border-radius: 10px;
+  // Se le da sombra en el centro a la calculadora
+  box-shadow: 0 0 30px rgb(187, 130, 130);
+  // Se le da un color de fondo
+  background-color: white;
+  // Se llama por ID a el display o ventana de resultados, que es hijo de calculator
+  #display {
+    // Color del texto
+    color: #0a1e23;
+    // Se le da margen
+    margin: 0 10px;
+    // Se le define un alto
+    height: 120px;
+    // Al ancho se le deja automático
+    width: auto;
+    // Se le da propiedad de flex para que sea responsive
+    display: flex;
+    // Se le dice que sus elementos se vaya a la parte de abajo
+    align-items: flex-end;
+    // Se le dice que sus elementos se vaya a la parte de la derecha
+    justify-content: flex-end;
+    // Se le cambia el tamaño de letra
+    font-size: 30px;
+    // Se le da margen en la parte de abajo, lo que hace que suba los elementos
+    margin-bottom: 20px;
+    // Se le cambia el grosor de la letra
+    font-weight: 500;
+  }
+  // Se le da invasión de arriba y abajo al botón de igual
+  #equal {
+    // Se le da la altura correspondiente para abarcar arriba y abajo
+    height: 130px;
+  }
+  // Ahora se le da estilo al botón: "button" con ID: clear--> button#clear o solo #clear
+  #clear {
+    //Se le cambia el color de fondo
+    background-color: #ffd5d8;
+    // Se le cambia el color de el ícono "C" del botón
+    color: #fc4552;
+  }
+  // Se le da estilo a todos los botones de números
+  .btn-number {
+    //Se le cambia el color de fondo
+    background-color: #c3eaff;
+    // Se le cambia el color de los números
+    color: #000000;
+  }
+  // Se le da estilo a todos los botones de operadores
+  .btn-operator {
+    //Se le cambia el color de fondo
+    background-color: #ffd0fb;
+    // Se le cambia el color de los operadores
+    color: #f967f3;
+  }
+  .btn-equal {
+    //Se le cambia el color de fondo
+    background-color: #adf9e7;
+    // Se le cambia el color de el ícono "=" del botón
+    color: #000;
+  }
+  //Implementación del tema DARK :O como se usa el sas, se puede acceder solo con usar el &.dark{} en vez de .calculator .dark{}
+
+  // Esta multiclase dark se activa cuando se llama en JS con: calculator.classList.toggle("dark");
+  &.dark {
+    // Se le da el fondo negro
+    background-color: #1b1b1b;
+    #display {
+      // Se cambia el color del display
+      color: #f8fafb;
+    }
+    #clear {
+      // Se cambia el color de fondo del botón
+      background-color: #4c35aa;
+      // Se cambia el color de la letra "C"
+      color: white;
+    }
+    .btn-number {
+      //Se le cambia el color de fondo
+      background-color: #8efda6;
+      // Se le cambia el color de los números
+      color: black;
+      // Se aumenta el grosor de los números
+      font-weight: 600;
+    }
+    .btn-operator {
+      //Se le cambia el color de fondo
+      background-color: #f0db4f;
+      // Se le cambia el color de los operadores
+      color: #aa00a4;
+    }
+    .btn-equal {
+      //Se le cambia el color de fondo
+      background-color: #f23b00;
+      // Se le cambia el color de el ícono "=" del botón
+      color: #ffffff;
+    }
+  }
+}
+// Se le da estilos al botón de activado y desactivado del tema oscuro
+.theme-toggler {
+  // Se le da posición absoluta porque su padre calculator es un relativo
+  position: absolute;
+  // Como se puede manipular la posición, en la parte de arriba
+  top: 30px;
+  // Como se puede manipular la posición, en la parte de la derecha
+  right: 30px;
+  // Se le cambia el color
+  color: #fff;
+  // Cuando se pase el cursor cambiará a un puntero
+  cursor: pointer;
+  // z-index es una propiedad CSS que establece la posición de un elemento en el eje Z (es decir, la profundidad) en relación con otros elementos.
+  // Un valor de z-index mayor indica que un elemento está "más cerca" del espectador, es decir, está en una capa más alta, mientras que un valor menor indica que está "más lejos" y se encuentra en una capa más baja.
+  // En este caso, el 1 indica que estará superpuesto a todo.
+  z-index: 1;
+  // &::before es un selector de pseudoelemento en CSS que permite insertar contenido antes del contenido de un elemento seleccionado.
+  // Es usado normalmente para añadir contenido estético a un elemento, usando la propiedad content. Este elemento se muestra en línea con el texto de forma predeterminada.
+  &::before {
+    // El decorador se deja vacío
+    content: '';
+    // Se le dice que la posición sea absoluta, sino no muestra el botón
+    position: absolute;
+    // Se da un un alto y ancho por igual
+    height: 30px;
+    width: 30px;
+    // Se le dice que se desplace un 50%, ya que se tendrán 2
+    top: 50%;
+    // Se le da una pequeña transformación, se le dice que se traslade por el tema oscuro/claro
+    transform: translate(-50%, -50%);
+    // Se le da un borde curvo
+    border-radius: 50%;
+    // Se le da un color de fondo
+    background-color: #333;
+    // Este va estar por detrás
+    z-index: -1;
+  }
+}
+// Se da estilos al activador
+.theme-toggler.active {
+  // Se cambia de color cuando se está en el tema claro
+  color: #333;
+  // También se le da un before con fines estéticos, este para cuando se está en el tema Dark
+  &::before {
+    // Se le da un color de fondo al botón de cambio de tema
+    background-color: #fff;
+  }
+}
+// Se le da estilo a TODOS los botones
+button {
+  // Se da ancho y alto cuadrados
+  width: 60px;
+  height: 60px;
+  // Se le quita el borde a los botones
+  border: 0;
+  // Se le da curvatura a los botones como si fueran circunferencia
+  border-radius: 30px;
+  // Se le da margen de separación a los botones
+  margin: 5px;
+  // Se establece el tamaño de letra
+  font-size: 20px;
+  // Cada que se pase el cursor por ahí cambiará a puntero
+  cursor: pointer;
+  // Se le da una pequeña transición al estar sobre los elementos
+  transition: all 0.4s ease;
+  // Se aplicará un hover por cada vez que se pase el mouse en los elementos
+  &:hover {
+    // Se le da una transformación, usando scale lo escala 1.1 más grande de lo que es cada vez que se pasa el mouse por cada botón
+    transform: scale(1.1);
+  }
+}
